@@ -1,0 +1,50 @@
+﻿<!-- start top-nav p-->
+<div class="h_right">
+    <div class="subMenu">
+        <div class="wrap">
+            <div class="inner">
+                <a href="/" id="sTop" class="subNavBtnM2"> @Nav.home</a>
+                <a href="#" id="s1" class="subNavBtn">@Nav.about_me</a>
+                <a href="#" id="s2" class="subNavBtnM2">@Nav.skills</a>
+                <a href="#" id="s3" class="subNavBtn">@Nav.resume</a>
+                <a href="#" id="s6" class="subNavBtnP2">@Nav.testimonials</a>
+                <a href="#" id="s4" class="subNavBtn end">@Nav.portfolio&nbsp;</a>
+                <a href="#" id="s5" class="subNavBtnM2 end nowrap-txt">@Nav.contact_me</a>
+            </div>
+            <!-- /.navbar-collapse -->
+            <a id="s6" class="right-msg subNavBtn msg-icon" href="#"><span> </span></a>
+            <div class="clearfix"> </div>
+        </div>
+        <!-- nav -->
+        
+        <script type="text/javascript">
+		$(document).ready( function() {
+		    MenuInit();
+		    $('.subMenu').smint({
+		    	'scrollSpeed' : 1000
+		    });
+		});
+        </script>
+        <script>
+		window.addEventListener("load",function() {
+		  setTimeout(function(){
+		    window.scrollTo(0, 1);
+		  }, 0);
+		});</script>
+    </div>
+    <!-- start smart_nav * -->
+    <nav class="nav">
+        <ul class="nav-list">
+            <li class="nav-item">@Html.ActionLink(Resources.Nav.linkHome, "ActionName", "Messages") <a href="/">@Nav.home</a></li>
+            <li class="nav-item"><a href="#about" class="scroll">@Nav.about_me</a></li>
+            <li class="nav-item"><a href="#skills" class="scroll">@Nav.skills</a></li>
+            <li class="nav-item"><a href="#resume" class="scroll">@Nav.resume</a></li>
+            <li class="nav-item"><a href="#testimonials" class="scroll">@Nav.testimonials</a></li>
+            <li class="nav-item"><a href="#portfolio" class="scroll">@Nav.portfolio</a></li>
+            <li class="nav-item"><a href="#contactdiv" class="scroll">@Nav.contact_me</a></li>
+            <div class="clear"></div>
+        </ul>
+    </nav>
+    <!-- end smart_nav * -->
+</div>
+<!-- end top-nav p-->

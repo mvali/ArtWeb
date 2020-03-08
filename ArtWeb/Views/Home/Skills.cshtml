@@ -1,0 +1,35 @@
+﻿@model List<Models.Skill>
+<!-- skills -->
+<div class="skills s2" id="skills">
+    <div class="wrap">
+        <div class="skills-left">
+            <h3>@Resources.Home.Skills.title</h3>
+            <p>@Resources.Home.Skills.content</p>
+            <p><a href="#contact" id="skillscontact">@Resources.Home.Skills.contactData</a></p>
+        </div>
+        <div class="skills-right">
+            <div class="main_pb">
+                <div class="progress1_of_2">
+                    @foreach (var item in Model)
+                    {
+                        <div class="prog">
+                            <div class="text">
+                                <span>@item.Name</span>
+                            </div>
+                            <div class="text_p">
+                                <span>@item.Percent%</span>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="progress-bar-container" data-percent="@item.Percent%">
+                                <div class="progress-bar" style="width: @item.Percent%;">
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+

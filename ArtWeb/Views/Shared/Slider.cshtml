@@ -1,0 +1,10 @@
+﻿@model List<Models.Slide>
+<!---start-da-slider----->
+@foreach (var item in Model)
+{
+    <div class="da-slide">
+        <h2>@item.Large</h2>
+        <p class="a"><a href="@item.Link">@item.Small</a></p>
+    </div>
+}
+<!---//End-da-slider----->

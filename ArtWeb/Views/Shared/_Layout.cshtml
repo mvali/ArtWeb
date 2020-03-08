@@ -1,0 +1,107 @@
+﻿@{ 
+    var routeValues = this.ViewContext.RouteData.Values;
+    var controller = routeValues["controller"] as string;
+    var action = routeValues["action"] as string;
+}
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>@Resources._Layout.title</title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700,600,300' rel='stylesheet' type='text/css'>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="softwaredev.ro"/>
+    <meta name="description" content="@Resources._Layout.MetaDescription"/>
+    @Styles.Render("~/assets/bundles/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/js")
+
+    <!---strat-slider---->
+
+    <script type="text/javascript">
+				$(function() {
+					$('#da-slider').cslider({
+						autoplay	: true,
+						bgincrement	: 150
+					});
+				});
+    </script>
+    <!---//strat-slider---->
+    <!-- scroll -->
+    <script type="text/javascript">
+			$(document).ready(function() {
+				var defaults = {
+		  			containerID: 'toTop', // fading element id
+					containerHoverID: 'toTopHover', // fading element hover id
+					scrollSpeed: 1200,
+					easingType: 'linear'
+		 		};
+				$().UItoTop({ easingType: 'easeOutQuart' });
+			});
+    </script>
+    <!-- //scroll -->
+</head>
+<body>
+    <!-- start slider -->
+    <p><span>@Html.ActionLink(Resources._Layout.Romanian, @action, @controller, new { language = "ro" }, new { rel = "alternate", hreflang = "ro", @class = "buttonLang" + (CultureHelper.LanguageIs("ro") ? " set" : ""), @title=Resources._Layout.ChooseYourLanguageRo })</span><span>@Html.ActionLink(Resources._Layout.English, @action, @controller, new { language = "en" }, new { rel = "alternate", hreflang = "en", @class = "buttonLang"+(CultureHelper.LanguageIs("en")?" set":""), @title = Resources._Layout.ChooseYouLanguageEng })</span></p>
+    <div class="slider_bg sTop">
+        <div id="da-slider" class="da-slider">
+            <!-- start main -->
+            @Html.Action("Slider", "Home")
+        </div>
+    </div>
+    <!-- start header -->
+    <div class="header">
+        <div class="logo">
+            <a href="#s6" class="scroll"><img src="~/Assets/Images/logo.png"></a>
+        </div>
+        <!-- start top-nav-->
+        @Html.Partial("Nav")
+        <!-- end top-nav-->
+
+        <div class="clear"></div>
+    </div>
+    <!---//End-header--->
+
+    @RenderBody()
+
+    <div class="footer">
+        <div class="wrap">
+            <div class="copy-right">
+                <p>@Html.Raw(_Layout.copyright)</p>
+            </div>
+            <div class="social-icons-set">
+                <ul>
+                    <li><a class="facebook" href="#"> </a></li>
+                    <li><a class="twitter" href="#"> </a></li>
+                    <li><a class="vimeo" href="#"> </a></li>
+                    <li><a class="rss" href="#"> </a></li>
+                    <li><a class="gplus" href="#"> </a></li>
+                    <li><a class="pin" href="#"> </a></li>
+                    <div class="clear"> </div>
+                </ul>
+            </div>
+            <div class="clear"> </div>
+        </div>
+    </div>
+    <!-- scroll_top_btn -->
+    <script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+			});
+		});
+    </script>
+
+    <a href="#" title="@Resources._Layout.Movetotop" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
+
+</body>
+</html>

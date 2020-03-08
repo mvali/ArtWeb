@@ -1,0 +1,56 @@
+﻿@model ArtWeb.Models.Contact
+<!-- contact --><a id="contact"></a>
+<div class="contact s5" id="contactdiv">
+    <div class="wrap">
+        <div class="contact-left">
+            <h3>@Resources.Home.Contact.head</h3>
+            <p class="style">@Resources.Home.Contact.text1</p>
+            <div class="get-intouch-left-address">
+                <p>@Resources.Home.Contact.p1</p>
+                <p>@Resources.Home.Contact.p2</p>
+                <p class="style1">@Resources.Home.Contact.email</p>
+                <p class="style2">@Resources.Home.Contact.phone</p>
+            </div>
+        </div>
+        <div class="contact-right">
+            <div class="form">
+                @if (TempData["Status"] != null)
+                {
+                    <div class="alert-info alert" style="display:none;">@TempData["Status"]</div>
+                }
+                @Html.ValidationSummary(false,Resources.Error.summary, new { @class="validate"})
+
+                @{ 
+                    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+                    var options = new AjaxOptions()
+                    {
+                        HttpMethod = "Post",
+                        InsertionMode = InsertionMode.ReplaceWith,
+                        UpdateTargetId = "contactdiv"
+                    };
+                }
+                @using (Ajax.BeginForm("ContactAjax", "ContactUs", new { language = culture }, options))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.TextBoxFor(x => x.Name, new { @class = "textbox", onfocus = "if (this.value == '" + Resources.Home.Contact.textboxName + "') this.value = '';", onblur = "if (this.value == '') { this.value = '" + @Resources.Home.Contact.textboxName + "'; }" })
+                    @Html.ValidationMessageFor(x => x.Name, null, new { @class= "validate" })
+
+                    @Html.TextBoxFor(x => x.Email, new { @class = "textbox", onfocus = "if (this.value == '" + Resources.Home.Contact.textboxEmail + "') this.value = '';", onblur = "if (this.value == '') { this.value = '" + @Resources.Home.Contact.textboxEmail + "'; }" })
+                    @Html.ValidationMessageFor(x => x.Email, null, new { @class = "validate" })
+                    <div class="clear"> </div>
+                    <div>
+                        @Html.TextAreaFor(x => x.Message, new { @class = "textbox", onfocus = "if (this.value == '" + Resources.Home.Contact.message + "') this.value = '';", onblur = "if (this.value == '') { this.value = '" + @Resources.Home.Contact.message + "'; }" })
+                        @Html.ValidationMessageFor(x => x.Message, null, new { @class = "validate" })
+                    </div>
+                    <div class="span4">
+                        <a href="#">
+                            <i><input type="submit" value="@Resources.Home.Contact.contactButton"></i>
+                            <div class="clear"></div>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>

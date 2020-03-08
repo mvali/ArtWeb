@@ -1,0 +1,34 @@
+﻿@model ArtWeb.Models.Contact
+<!-- contact -->
+<div class="contact s5" id="contactdiv">
+    <div class="wrap">
+        <div class="contact-left">
+            <h3>@Resources.Home.Contact.head</h3>
+            <p class="style">@Resources.Home.Contact.text1</p>
+            <div class="get-intouch-left-address">
+                <p>@Resources.Home.Contact.p1</p>
+                <p>@Resources.Home.Contact.p2</p>
+                
+                <p class="style1">@Resources.Home.Contact.email</p>
+                <p class="style2">@Resources.Home.Contact.phone</p>
+            </div>
+        </div>
+        <div class="contact-right">
+                @if (Utils.TempData("Status", TempData) == "emailSent")
+                {
+                    <div class="get-intouch-left-address"><p class="style1">@Resources.ContactUs.Contact.EmailSent</p><br/></div>
+                }
+
+                @{
+                    var optionsGet = new AjaxOptions()
+                    {
+                        HttpMethod = "Get",
+                        InsertionMode = InsertionMode.ReplaceWith,
+                        UpdateTargetId = "contactdiv"
+                    };
+                }
+                @Ajax.ActionLink(Resources.ContactUs.Contact.Reload, "ContactAjax", "", optionsGet, new { @class = "button1" })
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>

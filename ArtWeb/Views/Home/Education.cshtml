@@ -1,0 +1,44 @@
+﻿@model Models.EducationWorkVM
+
+<div class="resume-bottom">
+    <div class="wrap">
+        <div class="resume-left">
+            <h3>@Resources.Home.Education.educationTitle</h3>
+            <p>@Resources.Home.Education.educationP1</p>
+            <p>@Resources.Home.Education.educationP2</p>
+        </div>
+        <div class="resume-right">
+            @foreach (var item in Model.Educations.Reverse())
+            {
+                <div class="resume-grid">
+                    <h4>@item.Title</h4>
+                    <P>@item.TimeInterval</P>
+                    <P><a href="index.html">@item.Grade</a></P>
+                    <p class="style">@item.Content</p>
+                </div>
+            }
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="resume-bottom">
+    <div class="wrap">
+        <div class="resume-left">
+            <h3>@Resources.Home.Education.workExperienceTitle</h3>
+            <p>@Resources.Home.Education.workExpP1</p>
+            <p>@Resources.Home.Education.workExpP2</p>
+        </div>
+        <div class="resume-right">
+            @foreach (var item in Model.Works.Reverse())
+            {
+                <div class="resume-grid">
+                    <h4>@item.Title</h4>
+                    <P>@item.Period</P>
+                    <P><a href="index.html">@item.TimeInterval</a></P>
+                    <p class="style1">@item.Content</p>
+                </div>
+            }
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
